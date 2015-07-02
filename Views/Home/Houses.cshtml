@@ -1,0 +1,229 @@
+﻿
+@model IEnumerable<FinalProjectAshyiana.Models.House>
+@{
+    ViewBag.Title = "Houses";
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+      <link href="~/Content/bootstrap.css" rel ="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <style>
+      
+        #d1 {
+            background-color:white;
+            margin-top:30px;
+            margin-left:480px;
+            height:150px;
+            width:400px;
+            position:absolute;
+        }
+        #d2 {
+            background-color: aliceblue;
+            margin-top: 150px;
+            margin-left: 200px;
+            height: 300px;
+            width: 800px;
+        }
+          #d3 {
+            height :100px;
+            margin-top:210px;
+            margin-left:150px;
+
+          }
+          p{
+            color:black;
+            font-size:20px;
+            position:absolute;
+            left:50%;
+            top:34%;
+            margin:-50px 0 0 -100px;
+
+        }
+        #p9 {
+             color:black;
+            font-size:20px;
+            position:absolute;
+            left:50%;
+            top:-115%;
+        }
+        form {
+             position:absolute;
+             left:45%;
+             top:19%;
+        }
+        #img1 {
+            height:300px;
+            width:450px;
+        }
+           
+        
+        .col-md-7 {
+            margin-left:440px;
+            padding-bottom:10px;
+            margin-top: -250px;
+        }
+        .col-md-8 {
+            
+            margin-left:400px;
+            margin-top:-200px;
+        }
+        .col-md-9 {
+            
+            margin-left:370px;
+            margin-top:-150px;
+        }
+        .col-md-4 {
+           
+            margin-left:540px;
+            margin-top:-100px;
+
+        }
+        #p2 {
+            margin-top:-20px;
+        }
+        #p1 {
+            margin-top:-20px;
+        }
+         #p3 {
+            margin-top:-30px;
+        }
+        #p4{
+            margin-top:3px;
+        }
+        #p5 {
+            margin-top:40px;
+        }
+        #p6{
+            margin-top:60px;
+        }
+     
+     
+    </style>
+</head>
+<body >
+     
+   
+    
+    <div id ="d1">
+        <div class="row">
+           <p id ="p9"> Enter your  Maximum range  </p>
+           </div>
+        </div>
+           <form role="search">
+           <div class="form-group">
+               <input type="text" id ="price" class="form-control" placeholder="Price" name="pric" />
+           </div>
+           <button id="btn" type="submit" class="btn-primary">Search</button>
+       </form>
+    <div id ="d3"><span>Location:</span> <h3>@Session["Loc"] </h3></div>
+
+     @Scripts.Render("~/bundles/jquery")
+
+   <script>
+
+       $(document).ready(function () {
+           $('#btn').click(function () {
+
+               var Price = $('#price').val();
+               $('#div2').hide();
+               $.getJSON("/Home/GetHousesUptoPrice?Price=" + Price, function (x) {
+                   for( var i=0; i < x.length;i++)
+                   {
+                       $('#div2').append('<div class="row">');
+                       $('#div2').append('<div class="col-md-6">');
+                       $('#div2').append('<a href=" ' + @Url.Action("Specifications", "Home")+','+{ ParameterName: x[i].Id}+'">'
+                 + '<img id="img1"  src="'+x[i].ImagePath+'"' + 'alt="ImageS"/>'+'></a>');
+                        $('#div2').append('</div>');
+                        $('#div2').append('<div class="col-md-7">');
+                        $('#div2').append('<p>Address</p>');
+                        $('#div2').append('</div');
+                        $('#div2').append('</div');
+                        $('#div2').append('<div class="row">');
+                        $('#div2').append('<div class="col-md-8">');
+                        $('#div2').append('<p>'+x[i].Address+'</p>');
+                        $('#div2').append('</div');
+                        $('#div2').append('<div class="col-md-9">');
+                        $('#div2').append('<p> Price</p>');
+                        $('#div2').append('<p>'+x[i].Price+'</p>');
+                        $('#div2').append('</div');
+                        $('#div2').append('</div');
+                            
+                    
+
+               
+
+            
+
+            @*    @if (Session["name"] != null)
+                     {
+                          <div class="row">
+                              <div class="col-md-4">
+                      <p id ="p3"> Contact No</p>
+                      <p id ="p4"> @s.OwnerContactNo </p>
+                      <p id ="p5"> Email Address</p>
+                      <p id ="p6"> @s.EmailAdress</p>
+                                  </div>
+                              </div>
+                     } )
+                    }*@
+                   
+                   
+                    });
+
+                });
+           
+
+            });
+    </script>
+
+
+    @foreach(var s in Model )
+    {
+        <div id ="d2">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="@Url.Action("Specifications", "Home", new {id=@s.Id})">
+                <img id="img1"  src="@s.ImagePath" alt="ImageS"/>
+                    ></a>
+
+            </div>
+            <div class="col-md-7">
+                <p>Address</p>
+            </div>
+
+        </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p>@s.Address </p>
+
+                </div>
+                <div class ="col-md-9">
+                    <p>Price</p>
+                    <p id ="p2">@s.Price</p>
+
+            
+
+                </div>
+                 </div>
+                @if (Session["name"] != null)
+                     {
+                          <div class="row">
+                              <div class="col-md-4">
+                      <p id ="p3"> Contact No</p>
+                      <p id ="p4"> @s.OwnerContactNo </p>
+                      <p id ="p5"> Email Address</p>
+                      <p id ="p6"> @s.EmailAdress</p>
+                                  </div>
+                              </div>
+                     }
+
+        </div>
+        
+       }
+   
+</body>
+</html>
+

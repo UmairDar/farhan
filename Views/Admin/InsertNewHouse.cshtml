@@ -1,0 +1,114 @@
+﻿
+@model IEnumerable<FinalProjectAshyiana.Models.House>
+@{
+    ViewBag.Title = "InsertNewHouse";
+}
+
+
+!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+        <link href="~/Content/bootstrap.css" rel ="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script type =' text/javascript' src ="~/Scripts/jquery-2.1.4.js"> </script>
+    <script type="text/javascript" src="../../Scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/jquery-1.7.1.js"></script>
+    <style>
+
+        #t1 {
+            height:40px;
+            width:150px;
+            border-color:blue;
+            margin-top:150px;
+            margin-left:45px;
+        }
+          #t2 {
+            height:40px;
+            width:150px;
+            border-color:blue;
+            margin-top:20px;
+             margin-left:105px;
+        }
+            #t3 {
+            height:40px;
+            width:150px;
+            border-color:blue;
+            margin-top:20px;
+            margin-left:128px;
+        }
+            #t4 {
+            height:40px;
+            width:150px;
+            border-color:blue;
+            margin-top:20px;
+             margin-left:20px;
+        }
+              #t5 {
+            height:40px;
+            width:150px;
+            border-color:blue;
+            margin-top:20px;
+             margin-left:5px;
+        }
+        #t6 
+        {
+             margin-top:20px;
+
+        }
+        span {
+            font-family:Andalus;
+            font-size:20px;
+        }
+        #btn {
+            margin-top:20px;
+        }
+
+
+
+
+    </style>
+</head>
+<body style="background-color:white;height:750px;width:1230px ">
+    <div class ="row">
+        <div class ="col-md-3">
+
+        </div>
+        <div class = "col-md-8">
+            <form method ="post" action="/Admin/INewHouse" enctype="multipart/form-data">
+            <span> Enter House Location</span>
+            <input id ="t1" type ="text" placeholder="Loc"  name ="h.LocationName"/>
+            <br />
+            <br />
+             <span> Enter Address </span>
+            <input id ="t2"  type ="text" placeholder="Address" name="h.Address" />
+             <br />
+            <br />
+            <span> Enter Price </span>
+            <input id ="t3"  type ="text" placeholder="Price" name="h.Price"/>
+
+            <br />
+            <br />
+             <span> Enter Owner Contact No</span>
+            <input id ="t4"  type ="text" placeholder="Contactno" name ="OwnerContactNo"/>
+            <br />
+            <br />
+             <span> Enter Owner  Email Address</span>
+            <input id ="t5"  type ="text" placeholder="EAddress" name ="h.EmailAddress"/>
+            <br />
+            <br />
+             <span> Upload</span>
+             <input id="t6" type="file" name="h.ImagePath" />
+            <br />
+            <br />
+             <button id="btn" class="primary-btn">Insert</button> 
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+
+

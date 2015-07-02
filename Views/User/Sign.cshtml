@@ -1,0 +1,131 @@
+﻿@model FinalProjectAshyiana.Models.User
+@{
+    ViewBag.Title = "Sign";
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap.css" rel ="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <style>
+        
+        #d2 {
+            background-image:url('../../Images/ssbs.jpg');
+            height:410px;
+            width:460px;
+            position:absolute;
+            left:50%;
+            top:50%;
+            margin:-100px 0 0 -150px;
+        }
+        .row {
+            position:absolute;
+            left:50%;
+            top:50%;
+            margin:-100px 0 0 -150px;
+
+        }
+        #T1{
+            margin:10px,-15px,0px,0px;
+            padding:5px;
+            
+        }
+         #T2{
+            margin:20px;
+            padding:5px;
+            
+        }
+          #T3{
+            margin:14px;
+            padding:5px;
+            
+        }
+        #s1 {
+            font-size:17px;
+            font-family:Andalus;
+        }
+         #s2 {
+            font-size:17px;
+            font-family:Andalus;
+        }
+           #s3 {
+            font-size:17px;
+            font-family:Andalus;
+        }
+        #result1 {
+            color:red;
+            font-size:17px;
+            font-family:Andalus;
+        }
+        #result2 {
+              color:red;
+            font-size:17px;
+            font-family:Andalus;
+        }
+
+
+       
+    </style>
+</head>
+<body style="background-image:url('../../Images/sb.jpg');height:750px;width:1230px ">
+   
+    <div id="d2">
+    <div class="row">
+        <p id="checking">Checking... </p>
+        <form method="post" action="/User/SignUp">
+    <span id ="s1">Enter Your Name</span>
+     @Html.TextBoxFor(m => m.Name, new { placeholder="Name", type="text", id= "T1",name="Name",required = "required"})
+            <span id ="result1"></span>
+            <br />
+     <br />
+   <span id ="s2">Enter Password</span>
+            @Html.TextBoxFor(m => m.Password, new { placeholder="Password", type="password", id= "T2",required = "required"})
+         <br />
+         <br />
+     <span id ="s3">Enter Email Add</span>
+         @Html.TextBoxFor(m => m.Email_Address, new { placeholder="Email Address", type="text", id= "T3",required = "required"})
+            <span id ="resullt2"></span>
+         <br />
+         <br />
+     <button id="b1" class="btn-primary" type="submit">SignUp</button>
+</form>
+        @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function () {
+
+            $('#checking').hide();
+
+            $('#T1').focusout(function () {
+
+                var userName = $('#T1').val();
+                $('#checking').show();
+                $.getJSON("/User/CheckUserName?Name=" + userName, function (data) {
+                    $('#checking').hide();
+                    
+                    if (data) {
+                        $('#result1').text("User already exists in database");
+
+                    }
+                    else {
+                        $('#result1').text("User Name is available");
+                    }
+                });
+               
+            });
+            $('#T2').focusin(function () {
+
+                $('#result1').hide();
+            })
+
+        });
+    </script>
+    </div>
+    </div>
+</body>
+</html>
+
+
+
+

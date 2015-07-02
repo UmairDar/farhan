@@ -1,0 +1,202 @@
+﻿@model FinalProjectAshyiana.Models.House
+@{
+    ViewBag.Title = "Specifications";
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+      <title>Specification</title>
+<link rel="stylesheet" type="text/css" href="../../engine1/style.css" />
+<script type="text/javascript" src="../../engine1/jquery.js"></script>
+
+  <style>
+
+      #d1 {
+          height :100px;
+          width:500px;
+          
+      }
+    
+      body {
+          background-color:white;
+      }
+    
+      #p1 {
+          font-family:Arial;
+          font-size:40px;
+          font-style:oblique;
+          color:white; 
+          padding-top:20px;
+      }
+      #p2 {
+          left:55%;
+          top:60%;
+          
+      }
+      #ds {
+          margin-top:100px;
+          background-color:white;
+          height:600px;
+          width:800px;
+          margin-left:200px;
+      }
+      #dbtm {
+          margin-top:-55px;
+          margin-left:280px;
+          background-color:black;
+          height:420px;
+          width:600px;
+      }
+      .col-md-8 {
+          background-image:url('specsbg.jpeg');
+          padding-top:20px;
+          margin-top:25px;
+      }
+        #img-specs {
+          height :75px;
+          width :100px;
+      }
+     
+      #hdiv {
+          margin-top:300px;
+          background-color:white;
+         
+      }
+      #p5 {
+          color:black;
+          margin-left:280px;
+          font-size:50px;
+          font-family:Arial;
+          font-style:oblique;
+      }
+      #p6 {
+          font-family:Andalus;
+          font-size:20px;
+          font-style:oblique;
+          color:white; 
+
+      }
+      #p7 {
+          font-family:Andalus;
+          font-size:20px;
+          font-style:oblique;
+          color:white; 
+      }
+      #p8 {
+          font-family:Andalus;
+          font-size:20px;
+          font-style:oblique;
+          color:white; 
+      }
+      #p9 {
+          font-family:Andalus;
+          font-size:20px;
+          font-style:oblique;
+          color:white; 
+      }
+      #p10 {
+          font-family:Andalus;
+          font-size:20px;
+          font-style:oblique;
+          color:white; 
+      }
+      #p11 {
+          font-family:Andalus;
+          font-size:20px;
+          font-style:oblique;
+          color:white; 
+      }
+      #p12{
+          font-family:Andalus;
+          font-size:20px;
+          font-style:oblique;
+          color:white; 
+      }
+      #p13 {
+           font-family:Andalus;
+          font-size:20px;
+          font-style:oblique;
+          color:white; 
+      }
+  </style>
+    
+	
+	</head>
+
+<body>
+
+<div class="container">
+  <br/>
+    <div id ="d1" class ="row">
+        <div class =" col-md-3"></div>
+        <div id ="dd1" class ="col-md-2">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+   
+        <div id ="#hdiv" class =" col-md-3">
+            <p id ="p5"> Specifications</p>
+        </div>
+    </div>
+   
+    <div id ="ds">
+	
+ 
+<div id="wowslider-container1">
+<div class="ws_images"><ul>
+		<li><img src="../../data1/images/h36.jpg" alt="h36" id="wows1_0"/></li>
+		<li><a href="http://wowslider.com/vi"><img src="../../data1/images/h38.jpg" alt="bootstrap carousel example"  id="wows1_1"/></a></li>
+		<li><img src="../../data1/images/h37.jpg" alt="h37" id="wows1_2"/></li>
+	</ul></div>
+	<div class="ws_bullets"><div>
+		<a href="#" title="h36"><span><img src="../../data1/tooltips/h36.jpg" alt="h36"/>1</span></a>
+		<a href="#" title="h38"><span><img src="../../data1/tooltips/h38.jpg" alt="h38"/>2</span></a>
+		<a href="#" title="h37"><span><img src="../../data1/tooltips/h37.jpg" alt="h37"/>3</span></a>
+	</div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com">bootstrap slider</a> by WOWSlider.com v8.2</div>
+<div class="ws_shadow"></div>
+</div>	
+<script type="text/javascript" src="../../engine1/wowslider.js"></script>
+<script type="text/javascript" src="../../engine1/script.js"></script>
+</div>
+    
+     
+    
+    <div id="dbtm" class ="row" >
+        <div class ="col-md-2"></div>
+        <div class="col-md-8" >
+            <p id ="p1"> General Information</p>
+            <br />
+            <br />
+            <p id ="p6"> BedRooms  :<span> @Model.BedRooms</span> </p> 
+            <p id ="p7"> WashRooms : <span>@Model.Washrooms</span></p>
+            <p id ="p8">Kitchen    : <span>@Model.Kitchen</span></p>
+             <p id="p10">Storeys<span> @Model.Storeys</span></p>
+            @if (Model.Dinning_Room == "Yes")
+            {
+            <p id ="p9"> Dining Room </p>
+            }
+            @if (Model.Drawing_Room == "Yes")
+            {
+                <p id="p13">Drawing Room</p>
+            }
+            @if (Model.Lawn == "Yes")
+            {
+             <p id="p11">Lawn</p>
+            }
+             @if (Model.Parking == "Yes")
+            {
+               <p id="p12">Parking</p>
+            }
+        </div>
+    </div>
+    
+    </div>
+    
+</body>
+    
+</html>
+

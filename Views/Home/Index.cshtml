@@ -1,0 +1,90 @@
+﻿@model IEnumerable<FinalProjectAshyiana.Models.House>
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap.css" rel ="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script type =' text/javascript' src ="~/Scripts/jquery-2.1.4.js"> </script>
+    <script type="text/javascript" src="../../Scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/jquery-1.7.1.js"></script>
+
+  <script >
+      $(document).ready(function ()
+      {
+          var imgArr = new Array('url("~/Images/h2.jpg")',
+            'url("~/Images/h3.jpg")',
+            'url("~/Images/h7.jpg")',
+            'url("~/Images/h2.jpg")'
+            );
+          var preloadArr = new Array();
+          var i;
+          for (i = 0; i < imgArr.length; i++)
+          {
+              preloadArr[i] = new Image();
+              preloadArr[i].src = imgArr[i];
+          }
+          var currImg = 1;
+          var intID = setInterval(changeImg, 5000);
+          function changeImg()
+          {
+              $("body").animate({ opacity: 0 }, 1000, function ()
+              {
+                  $(this).css('background', 'url(' + preloadArr[currImg++ % preloadArr.length].src + ') top center no-repeat');
+              }).animate({ opacity: 1 }, 1000);
+          }
+      });
+
+  </script>
+    <style>
+        p{
+            color:white;
+            font-size:25px;
+            position:absolute;
+            left:40%;
+            top:50%;
+            margin:-50px 0 0 -100px;
+
+        }
+        #d1 {
+            background-color:seagreen;
+            height:200px;
+            width:500px;
+            position:absolute;
+            left:50%;
+            top:50%;
+            margin:-100px 0 0 -150px;
+
+        }
+        form {
+            position:absolute;
+            left:60%;
+            top:60%;
+            margin:-50px 80px 0 -120px;
+        }
+    
+      
+    </style>
+
+</head>
+<body  style="background-image: url('../../Images/h2.jpg');height:750px; width:1230px">
+   
+    <div id ="d1">
+       <div class="row">
+           <p> Enter your dream location </p>
+           </div>
+        </div>
+       <form role="search" method ="post" action="/Home/Search">
+           <div class="form-group">
+               <input type="text" class="form-control" placeholder="Location" name="h.LocationName"/>
+           </div>
+           <button type="submit" class="btn-primary">Search</button>
+       </form>
+   
+</body>
+</html>
+
+
